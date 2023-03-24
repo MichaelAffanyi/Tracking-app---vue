@@ -1,10 +1,12 @@
-<template>
+  <template>
   <div class="container">
     <Header @btn-click="toggleAddTask" title='Task Tracker' :showAddTask="showAddTask"/>
     <div v-show="showAddTask">
       <AddTask @add-task="addTask"/>
     </div>
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
+    <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
@@ -12,12 +14,14 @@
 import AddTask from './components/AddTask.vue';
 import Header from './components/Header.vue';
 import Tasks from './components/Tasks.vue';
+import Footer from './components/Footer.vue';
 export default {
   name: 'App',
   components: {
     Header,
     Tasks,
-    AddTask
+    AddTask,
+    Footer
   },
   methods: {
     toggleAddTask() {
